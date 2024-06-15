@@ -27,6 +27,15 @@ class FlutterAppBadger {
     return _channel.invokeMethod('removeBadge');
   }
 
+  static Future<int> getBadgeCount() async {
+    final mock = _mockGetBadgeCount;
+    if (mock != null) {
+      return mock();
+    }
+    final int count = _channel.invokeMethod('getBadgeCount');
+    return count ?? 0;
+  }
+
   static Future<bool> isAppBadgeSupported() async {
     final mock = _mockIsAppBadgeSupported;
     if (mock != null) {
@@ -41,16 +50,19 @@ class FlutterAppBadger {
   static Future<void> Function(int count)? _mockUpdateBadgeCount;
   static Future<void> Function()? _mockRemoveBadge;
   static Future<bool> Function()? _mockIsAppBadgeSupported;
+  static Future<int> Function()? _mockGetBadgeCount;
 
   @visibleForTesting
   static void setMocks({
     Future<void> Function(int count)? updateBadgeCount,
     Future<void> Function()? removeBadge,
     Future<bool> Function()? isAppBadgeSupported,
+    Future<int> Function()? getBadgeCount,
   }) {
     _mockUpdateBadgeCount = updateBadgeCount;
     _mockRemoveBadge = removeBadge;
     _mockIsAppBadgeSupported = isAppBadgeSupported;
+    _mockGetBadgeCount = getBadgeCount;
   }
 
   @visibleForTesting
@@ -58,5 +70,6 @@ class FlutterAppBadger {
     _mockUpdateBadgeCount = null;
     _mockRemoveBadge = null;
     _mockIsAppBadgeSupported = null;
+    _mockGetBadgeCount = null;
   }
 }
