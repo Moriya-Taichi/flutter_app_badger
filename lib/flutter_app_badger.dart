@@ -32,7 +32,7 @@ class FlutterAppBadger {
     if (mock != null) {
       return mock();
     }
-    final int count = _channel.invokeMethod('getBadgeCount');
+    final int? count = await _channel.invokeMethod('getBadgeCount');
     return count ?? 0;
   }
 

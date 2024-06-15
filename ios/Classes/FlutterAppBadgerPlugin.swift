@@ -3,7 +3,7 @@ import Flutter
 import UIKit
 import UserNotifications
 
-public class SwiftFlutterAppBadgerPlugin: NSObject, FlutterPlugin {
+public class FlutterAppBadgerPlugin: NSObject, FlutterPlugin {
     
     public static func register(
         with registrar: FlutterPluginRegistrar
