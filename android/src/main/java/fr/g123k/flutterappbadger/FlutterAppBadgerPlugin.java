@@ -45,6 +45,8 @@ public class FlutterAppBadgerPlugin implements MethodCallHandler, FlutterPlugin 
       result.success(null);
     } else if (call.method.equals("isAppBadgeSupported")) {
       result.success(ShortcutBadger.isBadgeCounterSupported(applicationContext));
+    } else if (call.method.equals("getBadgeCount")) {
+      result.success(0);
     } else {
       result.notImplemented();
     }
