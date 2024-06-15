@@ -12,7 +12,7 @@ public class FlutterAppBadgerPlugin: NSObject, FlutterPlugin {
             name: "g123k/flutter_app_badger", 
             binaryMessenger: registrar.messenger()
         )
-        let instance = SwiftFlutterAppBadgerPlugin()
+        let instance = FlutterAppBadgerPlugin()
         registrar.addMethodCallDelegate(
             instance, 
             channel: channel
